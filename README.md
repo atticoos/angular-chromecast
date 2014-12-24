@@ -6,6 +6,16 @@ This project provides an interface to the chome cast sdk with angular. This is s
 - [ ] Media integration
 - [ ] Tests
 
+## To Install:
+
+```shell
+> bower install angular-chromecast --save
+```
+
+And then include the dist file
+```html
+<script type="text/javascript" src="bower_components/dist/angular-chromecast.min.js"></script>
+```
 
 ## Example Usage:
 
