@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('angular-chromecast').provider('angularChromecast', function () {
-    var getter;
+  angular.module('ngChromecast').provider('ngChromecast', function () {
+    var getter,
+        self = this;
 
     this.loggingLevel = 'NONE';
     this.channels = [];
@@ -17,16 +18,16 @@
 
     return {
       setChannel: function (namespace, type) {
-        this.setChannelNamespaces([{namespace: namespace, type: type}]);
+        this.setChannels([{namespace: namespace, type: type}]);
       },
       setChannels: function (channels) {
         var messageTypes = ['JSON', 'STRING', 'CUSTOM'];
         if (angular.isArray(channels)) {
           angular.forEach(channels, function (channel) {
-            if (!angular.isObject(channel) || !channel.namespace || messagesTypes.indexOf(channel.type) === -1) {
+            if (!angular.isObject(channel) || !channel.namespace || messageTypes.indexOf(channel.type) === -1) {
               throw new Error('Invalid channel object');
             } else {
-              this.channels.push(channel);
+              self.channels.push(channel);
             }
           }.bind(this));
         } else {

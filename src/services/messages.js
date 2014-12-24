@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  function MessageBus ($rootScope, angularChromecast, CastService) {
+  function MessageBus ($rootScope, ngChromecast, CastService) {
     var CHANNEL_URN = 'urn:x-cast:',
         service = {},
         onMessageReceived;
@@ -15,7 +15,7 @@
       return CastService.getInstance().then(function (cast) {
         var instance = cast.receiver.CastReceiverManager.getInstance(),
             messageBus;
-        angular.forEach(angularChromecast.channels, function (channel) {
+        angular.forEach(ngChromecast.channels, function (channel) {
           messageBus = instance.getCastMessageBus(
             channel.namespace,
             cast.receiver.CastMessageBus.MessageType[channel.type]
@@ -54,5 +54,5 @@
     return service;
   }
 
-  angular.module('angular-chromecast').factory('MessageBus', ['$rootScope', 'angularChromecast', 'CastService', MessageBus]);
+  angular.module('ngChromecast').factory('MessageBus', ['$rootScope', 'ngChromecast', 'CastService', MessageBus]);
 }).call(this);

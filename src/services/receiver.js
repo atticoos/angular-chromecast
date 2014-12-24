@@ -5,7 +5,7 @@
     var service = {};
 
     service.start = function () {
-      CastService.getInstance().then(function (cast) {
+      return CastService.getInstance().then(function (cast) {
         var instance = cast.receiver.CastReceiverManager.getInstance();
         instance.onSenderConnected = function (event) {
           $rootScope.$broadcast('chromecast.senderConnected', event);
@@ -17,5 +17,5 @@
     return service;
   }
 
-  agular.module('angular-chromecast').service('ReceiverManager', ['CastService', ReceiverManager]);
+  angular.module('ngChromecast').service('ReceiverManager', ['CastService', ReceiverManager]);
 }).call(this);

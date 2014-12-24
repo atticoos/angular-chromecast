@@ -1,0 +1,17 @@
+{
+  "name": "angular-chromecast",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ajwhite/angular-chromecast",
+  "authors": [
+    "Atticus White <contact@atticuswhite.com>"
+  ],
+  "description": "AngularJS wrapper for GoogleCast chrome SDK",
+  "main": "src/app.js",
+  "keywords": [
+    "angularjs",
+    "google",
+    "googlecast",
+    "chromecast"
+  ],
+  "license": "MIT"
+}

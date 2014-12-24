@@ -1,13 +1,13 @@
 (function () {
 
-  angular.module('angular-chromecast', [])
-  .run(function ($rootScope, ReceiverManager, MessageBus) {
+  angular.module('ngChromecast', [])
+  .run(['$rootScope', 'ReceiverManager', 'MessageBus', function ($rootScope, ReceiverManager, MessageBus) {
 
-    ReceiverManager.initialize().then(function () {
+    ReceiverManager.start().then(function () {
       return MessageBus.initialize();
     }).then(function () {
       $rootScope.$broadcast('chromecast.ready', true);
     });
-  });
+  }]);
 
 }).call(this);

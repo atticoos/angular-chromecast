@@ -23,5 +23,5 @@
     return service;
   }
 
-  angular.module('angular-chromecast').factory('CastService', ['$q', '$interval', CastService]);
+  angular.module('ngChromecast').factory('CastService', ['$q', '$interval', CastService]);
 }).call(this);

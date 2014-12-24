@@ -1,18 +1,25 @@
-#angular-chromecast-receiver
+# angular-chromecast
 
-###Example app:
+This project provides an interface to the chome cast sdk with angular. This is still in active development, still on the roadmap:
+
+- [x] Channel/messaging integration
+- [ ] Media integration
+- [ ] Tests
+
+
+## Example Usage:
 
 ```js
-angular.module('myApp', ['angular-chromecast'])
+angular.module('myApp', ['ngChromecast'])
 
 // configure the module's channels and logging levels
-.config(['angularChromecast', function (angularChromecast) {
-  angularChromecast.setChannels([
+.config(['ngChromecastProvider', function (ngChromecastProvider) {
+  ngChromecastProvider.setChannels([
     {namespace: 'com.channel.namespace.one', type: 'JSON'},
     {namespace: 'com.channel.namespace.two', type: 'STRING'},
     {namespace: 'com.channel.namespace.three', type: 'CUSTOM'}
   ]);
-  angularChromecast.setLoggingLevel('VERBOSE');
+  ngChromecastProvider.setLoggingLevel('VERBOSE');
 }])
 
 // listen for events from the chromecast
@@ -31,3 +38,7 @@ angular.module('myApp', ['angular-chromecast'])
 }])
 
 ```
+
+## Contributing
+
+Although this is in very early stages of devleopment, contributions are always welcome. Please open an issue or submit a pull request with any issues.
