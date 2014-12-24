@@ -20,6 +20,8 @@ gulp.task('compress', ['build'], function () {
 
 gulp.task('default', ['build']);
 
+gulp.task('compile', ['build', 'compress']);
+
 gulp.task('watch', ['build'], function () {
   gulp.watch('src/**/*.js', ['build']);
 });

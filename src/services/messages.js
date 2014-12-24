@@ -4,7 +4,14 @@
   function MessageBus ($rootScope, ngChromecast, CastService) {
     var CHANNEL_URN = 'urn:x-cast:',
         service = {},
+        bindMessageBus,
         onMessageReceived;
+
+    createMessageBusMessageHandler = function (channel) {
+      return function (message) {
+        $rootScope.$broadcast('chromecast.messageReceived', message, channel.namespace);
+      }
+    };
 
     onMessageReceived = function (message) {
       console.log('[angular-chromecast]', 'messageRecieved', message);
@@ -17,10 +24,10 @@
             messageBus;
         angular.forEach(ngChromecast.channels, function (channel) {
           messageBus = instance.getCastMessageBus(
-            channel.namespace,
+            CHANNEL_URN + channel.namespace,
             cast.receiver.CastMessageBus.MessageType[channel.type]
           );
-          messageBus.onMessage = onMessageReceived;
+          messageBus.onMessage = createMessageBusMessageHandler(channel);
         });
       });
     };
